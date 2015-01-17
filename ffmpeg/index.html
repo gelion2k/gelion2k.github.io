@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)file:///Users/gelion/Downloads/Welcome%20document.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Rita's FFmpeg tutorial</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css">
+<style type="text/css">
+html, body { background-color: #FAFAFA; }
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div><div class="container"><h1 id="command-line-basics">Command Line basics</h1>
+
+<h2 id="starting-the-terminal">Starting the terminal</h2>
+
+<p>To open up the command line:</p>
+
+<ul>
+<li>on OSX press <kbd>CMD</kbd>+<kbd>SPACE</kbd> and enter <code>terminal</code></li>
+<li>on Windows press <kbd>START</kbd>, and enter <code>cmd</code></li>
+</ul>
+
+<p>After opening it should look like this (on OSX):  <br>
+<img src="ffmpeg_files/00ddB1y.png" alt="Terminal on OSX" title=""></p>
+
+<h2 id="basic-commands">Basic commands</h2>
+
+<p>Some basic commands (you have to press <kbd>ENTER</kbd> after entering each commands. Also note that commands are usually case sensitive, so you have to type them all lowercase):</p>
+
+<ul>
+<li><p><code>ls</code>: show the contents of the current directory. Note that when starting up the terminal it will always start in your home directory:</p>
+
+<p><img src="ffmpeg_files/vLfG4cN.png" alt="ls" title=""></p></li>
+<li><p><code>cd &lt;directory name&gt;</code>: enters the named directory. e.g. if you type <code>cd Documents</code> it will enter the Documents directory:</p>
+
+<p><img src="ffmpeg_files/6ovCpYB.png" alt="cd" title=""></p></li>
+<li><code>cd</code>: without any parameters (like <code>Documents</code>), <code>cd</code> will simply return you to the home directory</li>
+</ul>
+
+
+
+<h2 id="figuring-out-directory-and-file-names">Figuring out directory and file names</h2>
+
+<p>Usually you want to enter commands in the directory where the source file is. The easiest way to figure out where that directory is, is via Finder’s Get Info option. To use it, right click on your source file (like the <code>.MXF</code> file you want to convert, and then click “Get Info”):</p>
+
+<p><img src="ffmpeg_files/olI8KiA.png" alt="Get Info" title=""> </p>
+
+<p>Once you press “Get Info” the directory will be shown in the “Where” section:</p>
+
+<p><img src="ffmpeg_files/WkEEOQw.png" alt="Where section" title=""></p>
+
+<p>Just select all of the text there (including the initial <code>/</code> character), and copy it using <kbd>CMD</kbd>+<kbd>C</kbd>.</p>
+
+<p>Next if you go to the terminal simply enter the following</p>
+
+<pre><code>cd "Paste the directory's name here"
+</code></pre>
+
+<p>Something like this:</p>
+
+<p><img src="ffmpeg_files/WCnDxMu.png" alt="Entering a directory" title=""></p>
+
+<p>So basically enter <code>cd</code>, a space, a quotation mark (<code>"</code>), paste the directory name (using <kbd>CMD</kbd>+<kbd>V</kbd>), add another quotation mark, and then press <kbd>ENTER</kbd></p>
+
+<p>Sometimes you will also need to know the file’s name as well. You can find the file’s name in the “Name &amp; Extension” section of the “Get Info” dialog box inside Finder. Please make sure that “Hide extension” is unselected (check image above).</p>
+
+<h2 id="command-line-tricks">Command line tricks</h2>
+
+<p>Some tricks to use when using the command line:</p>
+
+<ul>
+<li>The arrow keys <kbd>UP</kbd> and <kbd>DOWN</kbd> can reload previously entered commands. You can edit and re-run them later in case you made a typo, or want to modify something in them</li>
+<li>Pressing <kbd>CTRL</kbd>+<kbd>C</kbd> at any time will forfeit the currently entered command</li>
+<li>If you know the initials of the filename or directory you want to type, you only need to type the first few characters of it, then press <kbd>TAB</kbd>. The terminal will automatically fill in the rest of the characters if it’s possible.</li>
+<li>To make it harder to make typos it’s preferred to copy and paste the filenames and directory names over from finder to the terminal. Never forget to surround them in quotes though!</li>
+</ul>
+
+<h1 id="ffmpeg-basics">FFMPEG basics</h1>
+
+<p>Note, that for these commands to work you have to install ffmpeg first on your machine. To install it you need to have administrator access to the computer. You can find the installation instructions in a later section.</p>
+
+<p>To test whether ffmpeg is working and installed correctly on your computer, start up a terminal, and enter <code>ffmpeg</code>:</p>
+
+<p><img src="ffmpeg_files/wZArlPe.png" alt="ffmpeg initial run" title=""></p>
+
+<p>If ffmpeg is installed correctly it should return a wall of text similar to the image above.</p>
+
+
+
+<h2 id="getting-information-about-a-file">Getting information about a file</h2>
+
+<p>To get some information about a file, first enter the file’s directory (check the previous section on how to do that), then enter the following command:</p>
+
+<pre><code>cd "file's directory"
+ffmpeg -i "file's name"
+</code></pre>
+
+<p>(so it’s <code>ffmpeg</code> then a space, then minus, then <code>i</code>, then another space, quotation marks (<code>"</code>), the file name pasted over from Finder, then another quotation mark, and finally <kbd>ENTER</kbd>.</p>
+
+<p>The result should look like this (the screenshot includes the <code>cd</code> to enter the directory, and the actual <code>ffmpeg</code> command to get information about the file):</p>
+
+<p><img src="ffmpeg_files/ewOVNKV.png" alt="Result of the file information run" title=""></p>
+
+<p>The important information about the file (bitrate, framerate, codec, video size, video and audio stream information) can usually be found at the bottom of the screen (marked in red on the image).</p>
+
+<h2 id="converting-the-file-to-a-different-container">Converting the file to a different container</h2>
+
+<p>To convert a file to a different container without transcoding you have to enter the following command:</p>
+
+<pre><code>cd "input file's directory"
+ffmpeg -i "input filename" -map 0:0 -map 0:1 -map 0:2 -acodec copy -vcodec copy "output filename"
+</code></pre>
+
+<p>Let’s split upt he command into small pieces:</p>
+
+<ul>
+<li><code>-i "input filename"</code> will tell ffmpeg what the input file is</li>
+<li><code>-map 0:0</code> will tell ffmpeg to include stream number <code>0:0</code> in the result file. As the input file contained three streams (as it can be seen from the previous screenshot: <code>0:0</code>, <code>0:1</code> and <code>0:2</code>) we have to tell him to include all three of them. Note that <code>ffmpeg</code> by default will include one video and one audio stream, so if the input file only contains one audio and one video stream (as common for video files) <code>-map</code> doesn’t need to be specified</li>
+<li><code>-acodec copy</code> will tell ffmpeg not to convert the audio stream but keep it as-is. This will maintain the audio stream’s quality</li>
+<li><code>-vcodec copy</code> will tell ffmpeg not to convert the video stream but keep it as-is. This will maintain the video stream’s quality, and will also quicken the conversion, as no transcoding will take place.</li>
+<li><code>"output filename"</code>: ffmpeg will know the target container type from the name of the output filename. So for example if you want to convert <code>"BD000401.MXF"</code> to a mov container, your output filename has to be <code>"BD000401.mov"</code></li>
+</ul>
+
+<p>Here is an example on how to convert our test <code>MXF</code> video into <code>MOV</code> without transcoding it’s audio or video contents:</p>
+
+<p><img src="ffmpeg_files/1vuIJ0D.png" alt="entering the commands" title=""></p>
+
+<pre><code>...
+</code></pre>
+
+<p><img src="ffmpeg_files/vlhZOx7.png" alt="and the finish" title=""></p>
+
+<h2 id="editing-out-a-section-of-the-file">Editing out a section of the file</h2>
+
+<p>To quickly cut out a section of the file you can use the following command:</p>
+
+<pre><code>cd "input file's directory"
+ffmpeg -i "input filename" -map 0:0 -map 0:1 -map 0:2 -acodec copy -vcodec copy -ss HH:MM:SS -t HH:MM:SS "output filename"
+</code></pre>
+
+<p>Note, that most of the command is exactly the same as the previous command was, apart from the inclusion of two additional (optional) parameters:</p>
+
+<ul>
+<li><code>-ss HH:MM:SS</code> will only process the video from the specified hours, minutes and seconds. So if you only need the video from the 10th minute specify <code>-ss 00:10:00</code></li>
+<li><code>-t HH:MM:SS</code> will only process the given amount of video. So if you only need 5 seconds of footage, then enter: <code>-t 00:00:05</code></li>
+</ul>
+
+<p>The above two commands are entirely optional. If only <code>-ss</code> is set, then video processing will begin at that moment, and will run until the end of the file. If only <code>-t</code> is set, then video processing will start at the beginning, but will stop after the specified amount of time.</p>
+
+<p>Also note, that when copying streams (using <code>-vcodec copy</code>), then it’s possible that due to the restrictions of the codec the start and end times might differ a few seconds from the specified amounts (for example instead starting at the 10 minute mark, it will actually start at 9 minutes and 58 seconds)</p>
+
+<h2 id="video-transcoding">Video transcoding</h2>
+
+<p>Sometimes it is necessary to transcode the video, and not just copy it into a new container. To transcode the video the vcodec part needs to be changed like this:</p>
+
+<pre><code>cd "input file's directory"
+ffmpeg -i "input filename" -map 0:0 -map 0:1 -map 0:2 -acodec copy -vcodec libx264 -b:v 10000k "output filename"
+</code></pre>
+
+<p>This will copy the audio streams, but convert the video stream to H.264. <code>-b:v</code> specifies the target bitrate. Of course the coding can be fine tuned further, it’s advised to consult other ffmpeg guides on how to fine tune the result. Some guidelines:</p>
+
+<ul>
+<li><code>-b:v</code> sets the bitrate of the result video. For SD contents in H.264 it is advised to set this between <code>2000-5000</code>. For 720p <code>5000-10000</code> is advised, for 1080p <code>10000-20000</code> or even more (depending on context)</li>
+<li>Alternatively you can use <code>-crf 20</code> to set a constant rate factor of 20, which return usually good results. Lower values mean better quality (so <code>-crf 15</code> would result in a file which takes up more space, but is considered to have a better quality)</li>
+</ul>
+
+
+
+<h2 id="audio-transcoding">Audio transcoding</h2>
+
+<p>Sometimes it is necessary to transcode the audio, and not just copy it into a new container. To transcode the audio part the acodec part needs to be changed from <code>-acodec copy</code> to one of the following:</p>
+
+<ul>
+<li><code>-acodec libfaac -b:a 128k</code>: it will use AAC encoding with a bitrate of 128k</li>
+<li><code>-acodec libmp3lame -b:a 128k</code>: it will use MP3 encoding with a bitrate of 128k</li>
+</ul>
+
+<p>Note, that for mov and mp4 containers using AAC is preferred, but unfortunately not all <code>ffmpeg</code> version support it.</p>
+
+<h1 id="installing-ffmpeg">Installing ffmpeg</h1>
+
+<p>There are various ways to install ffmpeg onto OSX. The preferred way is via <a href="http://brew.sh/">Homebrew</a>, but that involves installing XCode and additional programming tools to work.</p>
+
+<p>A bit more user friendly way to install ffmpeg is to download a pre-built version from <a href="http://ffmpegmac.net/">http://ffmpegmac.net/</a>, and install it separately. To do that:</p>
+
+<ol>
+<li>Download the appropriate version from the site (usually the 64-bit version, unless you’re using an old mac)</li>
+<li>Extract the downloaded file (double click the file)</li>
+<li>In Finder press <kbd>CMD</kbd>+<kbd>SHIFT&gt;</kbd>+<kbd>G</kbd></li>
+<li>Enter <code>/usr/local</code></li>
+<li>Create a new directory, called <code>bin</code>, if it doesn’t exist</li>
+<li>Copy the extracted <code>ffmpeg</code> file to this directory</li>
+</ol>
+
+<p>Note, that for steps 5 and 6 you will need administrator rights.</p>
+
+<p>An alternative way (that doesn’t require administrator access) is to copy the <code>ffmpeg</code> file to the <code>Documents</code> directory, and enter the following command exactly as shown here every time you start up a terminal:</p>
+
+<pre><code>export PATH=~/Documents:$PATH
+</code></pre>
+
+<p>This method is only plausible if you don’t have administrator rights and cannot get ffmpeg installed any other way.</p>
+
+<h1 id="creating-scripts">Creating scripts</h1>
+
+<p>To convert multiple files in one batch sometimes it’s easier to create a separate script file that contains the commands that need to be entered. To create a script file do the following:</p>
+
+<ol>
+<li>Open up TextEdit</li>
+<li>Under “Format” select “Make Plain Text”</li>
+<li>Under “Edit”, select “Substitutions” and make sure everything is disabled</li>
+</ol>
+
+<p>Steps 2 and 3 will make sure that anything you enter will be preserved, so it will be supported by the command line.</p>
+
+<p>Now inside the editor you can type any commands you want. Usually you want to call <code>cd</code> and <code>ffmpeg</code> after each other multiple times, but with the directory and file names changed.</p>
+
+<p>Example:</p>
+
+<p><img src="ffmpeg_files/NyXurDS.png" alt="example script" title=""></p>
+
+<p>After writing the script, save it as a <code>.txt</code> file in Documents. Let’s save it as <code>coding.txt</code></p>
+
+<p>After it is saved open up a terminal, go to the Documents folder, and run the script using the following commands:</p>
+
+<pre><code>cd Documents
+. coding.txt
+</code></pre>
+
+<p>So after the initial <code>cd</code> command enter a dot (<code>.</code>), a space, and the name of the file (including the extension).</p>
+
+<p>Note that this will run the commands after each other, even if one of the encounters an error, so it is advised to only run the script with one <code>ffmpeg</code> command initially, and if it goes well add the remaining commands later, and re-run the script.</p></div>
+</body></html>
