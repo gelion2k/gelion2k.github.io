@@ -708,10 +708,7 @@ section, article {
     margin-bottom: 0; }
 
 header {
-  font-family: "Cinzel Decorative", serif;
-  background-image: url("images/gelion_tr.png");
-  background-repeat: no-repeat;
-  background-size: auto 100%; }
+  font-family: "Cinzel Decorative", serif; }
   header > h1 {
     font-weight: 700; }
   header > p {
@@ -841,6 +838,10 @@ ol.default {
   position: relative; }
 
 /* Me */
+#me header {
+  background-image: url("images/gelion_tr.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%; }
 #me .pic {
   position: relative;
   display: block; }

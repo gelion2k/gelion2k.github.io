@@ -211,10 +211,6 @@
 	header {
 		font-family: "Cinzel Decorative", serif;
 
-		background-image: url("images/gelion_tr.png");
-		background-repeat: no-repeat;
-		background-size: auto 100%;
-
 		> h1 {
 			font-weight: 700;
 		}
@@ -384,6 +380,13 @@
 /* Me */
 
 	#me {
+		header {
+
+			background-image: url("images/gelion_tr.png");
+			background-repeat: no-repeat;
+			background-size: auto 100%;
+
+		}
 		.pic {
 			position: relative;
 			display: block;
