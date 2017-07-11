@@ -2,7 +2,6 @@ Command Line basics
 ==================
 
 Starting the terminal
-
 --------------------------
 
 To open up the command line:
@@ -11,7 +10,7 @@ To open up the command line:
 - on Windows press <kbd>START</kbd>, and enter `cmd`
 
 After opening it should look like this (on OSX): 
-![Terminal on OSX](http://i.imgur.com/00ddB1y.png)
+![Terminal on OSX](ffmpeg_files/00ddB1y.png)
 
 Basic commands
 --------------------
@@ -20,10 +19,10 @@ Some basic commands (you have to press <kbd>ENTER</kbd> after entering each comm
 
 - `ls`: show the contents of the current directory. Note that when starting up the terminal it will always start in your home directory:
 
-  ![ls](http://i.imgur.com/vLfG4cN.png)
+  ![ls](ffmpeg_files/vLfG4cN.png)
 - `cd <directory name>`: enters the named directory. e.g. if you type `cd Documents` it will enter the Documents directory:
 
-  ![cd](http://i.imgur.com/6ovCpYB.png)
+  ![cd](ffmpeg_files/6ovCpYB.png)
 - `cd`: without any parameters (like `Documents`), `cd ` will simply return you to the home directory
 
 Figuring out directory and file names
@@ -31,11 +30,11 @@ Figuring out directory and file names
 
 Usually you want to enter commands in the directory where the source file is. The easiest way to figure out where that directory is, is via Finder's Get Info option. To use it, right click on your source file (like the `.MXF` file you want to convert, and then click "Get Info"):
 
-![Get Info](http://i.imgur.com/olI8KiA.png) 
+![Get Info](ffmpeg_files/olI8KiA.png) 
 
 Once you press "Get Info" the directory will be shown in the "Where" section:
 
-![Where section](http://i.imgur.com/WkEEOQw.png)
+![Where section](ffmpeg_files/WkEEOQw.png)
 
 Just select all of the text there (including the initial `/` character), and copy it using <kbd>CMD</kbd>+<kbd>C</kbd>.
 
@@ -45,7 +44,7 @@ Next if you go to the terminal simply enter the following
 
 Something like this:
 
-![Entering a directory](http://i.imgur.com/WCnDxMu.png)
+![Entering a directory](ffmpeg_files/WCnDxMu.png)
 
 So basically enter `cd`, a space, a quotation mark (`"`), paste the directory name (using <kbd>CMD</kbd>+<kbd>V</kbd>), add another quotation mark, and then press <kbd>ENTER</kbd>
 
@@ -68,7 +67,7 @@ Note, that for these commands to work you have to install ffmpeg first on your m
 
 To test whether ffmpeg is working and installed correctly on your computer, start up a terminal, and enter `ffmpeg`:
 
-![ffmpeg initial run](http://i.imgur.com/wZArlPe.png)
+![ffmpeg initial run](ffmpeg_files/wZArlPe.png)
 
 If ffmpeg is installed correctly it should return a wall of text similar to the image above.
 
@@ -84,17 +83,21 @@ To get some information about a file, first enter the file's directory (check th
 
 The result should look like this (the screenshot includes the `cd` to enter the directory, and the actual `ffmpeg` command to get information about the file):
 
-![Result of the file information run](http://i.imgur.com/ewOVNKV.png)
+![Result of the file information run](ffmpeg_files/ewOVNKV.png)
 
 The important information about the file (bitrate, framerate, codec, video size, video and audio stream information) can usually be found at the bottom of the screen (marked in red on the image).
 
 Converting the file to a different container
 -----------------------------------------------------
 
-To convert a file to a different container without transcoding you have to enter the following command:
+To convert an `MXF` file to a different container without transcoding you have to enter the following command:
 
     cd "input file's directory"
     ffmpeg -i "input filename" -map 0:0 -map 0:1 -map 0:2 -acodec copy -vcodec copy "output filename"
+
+Or, for simpler video files (for example `mp4`, `mov` or `m2t`):
+
+    ffmpeg -i "input filename" -acodec copy -vcodec copy "output filename"
 
 Let's split upt he command into small pieces:
 
@@ -106,11 +109,11 @@ Let's split upt he command into small pieces:
 
 Here is an example on how to convert our test `MXF` video into `MOV` without transcoding it's audio or video contents:
 
-![entering the commands](http://i.imgur.com/1vuIJ0D.png)
+![entering the commands](ffmpeg_files/1vuIJ0D.png)
 
     ...
     
-![and the finish](http://i.imgur.com/vlhZOx7.png)
+![and the finish](ffmpeg_files/vlhZOx7.png)
 
 Editing out a section of the file
 --------------------------------------
@@ -124,10 +127,13 @@ Note, that most of the command is exactly the same as the previous command was, 
 
 * `-ss HH:MM:SS` will only process the video from the specified hours, minutes and seconds. So if you only need the video from the 10th minute specify `-ss 00:10:00`
 * `-t HH:MM:SS` will only process the given amount of video. So if you only need 5 seconds of footage, then enter: `-t 00:00:05`
+* `-to HH:MM:SS` will only process the video until the specified hours, minutes and seconds. So if you only need the video until the 10th minute specify `-to 00:10:00`
 
-The above two commands are entirely optional. If only `-ss` is set, then video processing will begin at that moment, and will run until the end of the file. If only `-t` is set, then video processing will start at the beginning, but will stop after the specified amount of time.
+The above commands are entirely optional. If only `-ss` is set, then video processing will begin at that moment, and will run until the end of the file. If only `-t` is set, then video processing will start at the beginning, but will stop after the specified amount of time. Note that `-t` and `-to` cannot be used at the same time.
 
 Also note, that when copying streams (using `-vcodec copy`), then it's possible that due to the restrictions of the codec the start and end times might differ a few seconds from the specified amounts (for example instead starting at the 10 minute mark, it will actually start at 9 minutes and 58 seconds)
+
+If needed you can also specify the start and end time in milliseconds using the `HH:MM:SS.MMM` format, for example `01:23:45.678`
 
 Video transcoding
 ----------------------
@@ -149,8 +155,9 @@ Sometimes it is necessary to transcode the audio, and not just copy it into a ne
 
 * `-acodec libfaac -b:a 128k`: it will use AAC encoding with a bitrate of 128k
 * `-acodec libmp3lame -b:a 128k`: it will use MP3 encoding with a bitrate of 128k
+* `-an`: it will remove the audio from the results
 
-Note, that for mov and mp4 containers using AAC is preferred, but unfortunately not all `ffmpeg` version support it.
+Note, that for `mov` and `mp4` containers using AAC is preferred, but unfortunately not all `ffmpeg` version support it.
 
 Installing ffmpeg
 ==============
@@ -189,7 +196,7 @@ Now inside the editor you can type any commands you want. Usually you want to ca
 
 Example:
 
-![example script](http://i.imgur.com/NyXurDS.png)
+![example script](ffmpeg_files/NyXurDS.png)
 
 After writing the script, save it as a `.txt` file in Documents. Let's save it as `coding.txt`
 

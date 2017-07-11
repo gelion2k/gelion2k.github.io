@@ -3,7 +3,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <title>Rita's FFmpeg tutorial</title>
-<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css">
+<link rel="stylesheet" href="ffmpeg_files/base.css">
 <style type="text/css">
 html, body { background-color: #FAFAFA; }
 </style></head>
@@ -20,6 +20,8 @@ html, body { background-color: #FAFAFA; }
 
 <p>After opening it should look like this (on OSX):  <br>
 <img src="ffmpeg_files/00ddB1y.png" alt="Terminal on OSX" title=""></p>
+
+
 
 <h2 id="basic-commands">Basic commands</h2>
 
@@ -62,6 +64,8 @@ html, body { background-color: #FAFAFA; }
 
 <p>Sometimes you will also need to know the file’s name as well. You can find the file’s name in the “Name &amp; Extension” section of the “Get Info” dialog box inside Finder. Please make sure that “Hide extension” is unselected (check image above).</p>
 
+
+
 <h2 id="command-line-tricks">Command line tricks</h2>
 
 <p>Some tricks to use when using the command line:</p>
@@ -72,6 +76,8 @@ html, body { background-color: #FAFAFA; }
 <li>If you know the initials of the filename or directory you want to type, you only need to type the first few characters of it, then press <kbd>TAB</kbd>. The terminal will automatically fill in the rest of the characters if it’s possible.</li>
 <li>To make it harder to make typos it’s preferred to copy and paste the filenames and directory names over from finder to the terminal. Never forget to surround them in quotes though!</li>
 </ul>
+
+
 
 <h1 id="ffmpeg-basics">FFMPEG basics</h1>
 
@@ -101,12 +107,19 @@ ffmpeg -i "file's name"
 
 <p>The important information about the file (bitrate, framerate, codec, video size, video and audio stream information) can usually be found at the bottom of the screen (marked in red on the image).</p>
 
+
+
 <h2 id="converting-the-file-to-a-different-container">Converting the file to a different container</h2>
 
-<p>To convert a file to a different container without transcoding you have to enter the following command:</p>
+<p>To convert an <code>MXF</code> file to a different container without transcoding you have to enter the following command:</p>
 
 <pre><code>cd "input file's directory"
 ffmpeg -i "input filename" -map 0:0 -map 0:1 -map 0:2 -acodec copy -vcodec copy "output filename"
+</code></pre>
+
+<p>Or, for simpler video files (for example <code>mp4</code>, <code>mov</code> or <code>m2t</code>):</p>
+
+<pre><code>ffmpeg -i "input filename" -acodec copy -vcodec copy "output filename"
 </code></pre>
 
 <p>Let’s split upt he command into small pieces:</p>
@@ -128,6 +141,8 @@ ffmpeg -i "input filename" -map 0:0 -map 0:1 -map 0:2 -acodec copy -vcodec copy 
 
 <p><img src="ffmpeg_files/vlhZOx7.png" alt="and the finish" title=""></p>
 
+
+
 <h2 id="editing-out-a-section-of-the-file">Editing out a section of the file</h2>
 
 <p>To quickly cut out a section of the file you can use the following command:</p>
@@ -141,11 +156,16 @@ ffmpeg -i "input filename" -map 0:0 -map 0:1 -map 0:2 -acodec copy -vcodec copy 
 <ul>
 <li><code>-ss HH:MM:SS</code> will only process the video from the specified hours, minutes and seconds. So if you only need the video from the 10th minute specify <code>-ss 00:10:00</code></li>
 <li><code>-t HH:MM:SS</code> will only process the given amount of video. So if you only need 5 seconds of footage, then enter: <code>-t 00:00:05</code></li>
+<li><code>-to HH:MM:SS</code> will only process the video until the specified hours, minutes and seconds. So if you only need the video until the 10th minute specify <code>-to 00:10:00</code></li>
 </ul>
 
-<p>The above two commands are entirely optional. If only <code>-ss</code> is set, then video processing will begin at that moment, and will run until the end of the file. If only <code>-t</code> is set, then video processing will start at the beginning, but will stop after the specified amount of time.</p>
+<p>The above commands are entirely optional. If only <code>-ss</code> is set, then video processing will begin at that moment, and will run until the end of the file. If only <code>-t</code> is set, then video processing will start at the beginning, but will stop after the specified amount of time. Note that <code>-t</code> and <code>-to</code> cannot be used at the same time.</p>
 
 <p>Also note, that when copying streams (using <code>-vcodec copy</code>), then it’s possible that due to the restrictions of the codec the start and end times might differ a few seconds from the specified amounts (for example instead starting at the 10 minute mark, it will actually start at 9 minutes and 58 seconds)</p>
+
+<p>If needed you can also specify the start and end time in milliseconds using the <code>HH:MM:SS.MMM</code> format, for example <code>01:23:45.678</code></p>
+
+
 
 <h2 id="video-transcoding">Video transcoding</h2>
 
@@ -171,9 +191,12 @@ ffmpeg -i "input filename" -map 0:0 -map 0:1 -map 0:2 -acodec copy -vcodec libx2
 <ul>
 <li><code>-acodec libfaac -b:a 128k</code>: it will use AAC encoding with a bitrate of 128k</li>
 <li><code>-acodec libmp3lame -b:a 128k</code>: it will use MP3 encoding with a bitrate of 128k</li>
+<li><code>-an</code>: it will remove the audio from the results</li>
 </ul>
 
-<p>Note, that for mov and mp4 containers using AAC is preferred, but unfortunately not all <code>ffmpeg</code> version support it.</p>
+<p>Note, that for <code>mov</code> and <code>mp4</code> containers using AAC is preferred, but unfortunately not all <code>ffmpeg</code> version support it.</p>
+
+
 
 <h1 id="installing-ffmpeg">Installing ffmpeg</h1>
 
@@ -198,6 +221,8 @@ ffmpeg -i "input filename" -map 0:0 -map 0:1 -map 0:2 -acodec copy -vcodec libx2
 </code></pre>
 
 <p>This method is only plausible if you don’t have administrator rights and cannot get ffmpeg installed any other way.</p>
+
+
 
 <h1 id="creating-scripts">Creating scripts</h1>
 
