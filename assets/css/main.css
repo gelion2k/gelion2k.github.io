@@ -859,6 +859,9 @@ ol.default {
 #resume iframe {
   width: 100%;
   height: 30em; }
+#resume object {
+  width: 100%;
+  height: 30em; }
 
 #work section {
   font-size: 0.8em; }
