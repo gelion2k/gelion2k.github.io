@@ -1,3 +1,7 @@
 filmek
 .DS_Store
 *.map
+cv/*.aux
+cv/*.log
+cv/*.out
+cv/*.synctex.gz
