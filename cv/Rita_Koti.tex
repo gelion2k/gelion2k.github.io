@@ -8,24 +8,27 @@
 \definecolor{color1}{rgb}{0.4,0.10196,0.07450}% burgundy: 139/255 (0.545098) or 152/255 (0.596078)
 \definecolor{color2}{rgb}{0.35,0.35,0.35}% dark grey
 
+\RequirePackage{fontspec}
 \usepackage{multicol}
-\usepackage{fontawesome}
+\usepackage{fontawesome5}
 \usepackage[abspath]{currfile}
 
 \nopagenumbers{}
 \usepackage[utf8]{luainputenc}
 
-\renewcommand{\familydefault}{\rmdefault}
-\renewcommand*{\addresssymbol}   {{\small\faGlobe}~}
-\renewcommand*{\mobilephonesymbol}   {{\small\faPhoneSquare}~}
-\renewcommand*{\emailsymbol}         {{\small\faEnvelopeSquare}~}          % alternative: \faInbox
-\newcommand*{\homepagesocialsymbol}{{\small\faExternalLinkSquare}~}           % alternative: \faLinkedinSquare
-\renewcommand*{\linkedinsocialsymbol}{{\small\faLinkedinSquare}~}           % alternative: \faLinkedinSquare
-\renewcommand*{\twittersocialsymbol} {{\small\faTwitterSquare}~}            % alternative: \faTwitterSquare
-\renewcommand*{\githubsocialsymbol}  {{\small\faGithubSquare}~}             % alternative: \faGithubSquare, \faGithubSquare
-\newcommand*{\vimeosocialsymbol} {{\small\faVimeoSquare}~}
+\newfontfamily{\cinzel}[Path=\currfileabsdir, Ligatures=TeX, UprightFont=CinzelDecorative-Regular.ttf, BoldFont=CinzelDecorative-Bold.ttf]{CinzelDecorative}
 
-\newfontfamily{\cinzel}[Path=\currfileabsdir, Ligatures=TeX, UprightFont=CinzelDecorative-Regular.ttf, BoldFont=CinzelDecorative-Bold.ttf]{Cinzel Decorative}
+\renewcommand{\familydefault}{\rmdefault}
+\renewcommand*{\addresssymbol}       {{\small\faMapMarker}~}
+\renewcommand*{\mobilephonesymbol}   {{\small\faPhoneSquare}~}
+\renewcommand*{\emailsymbol}         {{\small\faEnvelopeSquare}~}
+\newcommand*  {\homepagesocialsymbol}{{\small\faIcon{external-link-square-alt}}~}
+\renewcommand*{\linkedinsocialsymbol}{{\small\faLinkedin}~}
+\renewcommand*{\twittersocialsymbol} {{\small\faTwitterSquare}~}
+\renewcommand*{\githubsocialsymbol}  {{\small\faGithubSquare}~}
+\newcommand*  {\vimeosocialsymbol}   {{\small\faVimeoSquare}~}
+\newcommand*  {\imdbsocialsymbol}    {{\small\faImdb}~}
+
 
 \newcommand{\shoton}[1]{{\tiny (using #1)}}
 
@@ -53,6 +56,7 @@
 \collectionadd[twitter]{socials}{\protect\httplink[{\tiny twitter.com/}gelion2k]{twitter.com/gelion2k}}
 \collectionadd[linkedin]{socials}{\protect\httplink[{\tiny linkedin.com/in/}gelion]{linkedin.com/in/gelion}}
 \collectionadd[vimeo]{socials}{\protect\httplink[{\tiny vimeo.com/}gelion]{www.vimeo.com/gelion}}
+\collectionadd[imdb]{socials}{\protect\httplink[{\tiny imdb.com/name/}nm9475948]{www.imdb.com/name/nm9475948}}
 %\extrainfo{additional information}
 \photo[64pt][0pt]{gelion.png}
 %\quote{Some quote}
@@ -93,7 +97,7 @@ Portfolio available on my site:
 \item August 2018 {\bfseries Edinburgh Festival City Volunteers}, \textit{Promo Video}, Videographer
 \item June 2018 {\bfseries Spaceship}, \textit{Short Movie}, Script Supervisor
 \item March 2018 {\bfseries A is for Artist}, \textit{Short Art Movie}, Camera Assistant
-\item February 2018 {\bfseries The Birthday Party}, \textit{Short Movie}, Camera Assistant
+\item February 2018 {\bfseries Anat's Party}, \textit{Short Movie}, Camera Assistant
 \item October 2017 {\bfseries 21st UK Jewish Film Festival}, \textit{Promo Video}, Camera Assistant
 \item June 2017 {\bfseries Brexpectations}, \textit{Documentary}, Camera, Editing
 \item June 2017 {\bfseries Self Esteem -- Your Wife}, \textit{Music Promo}, Camera Trainee
