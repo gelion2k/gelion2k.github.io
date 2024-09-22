@@ -1,0 +1,237 @@
+%! TEX program = lualatex
+\documentclass[10pt,a4paper,roman]{moderncv}
+
+\moderncvstyle[right]{classic}
+\moderncvcolor{burgundy}
+
+%\definecolor{color0}{rgb}{0,0,0}% black
+\definecolor{color1}{rgb}{0.4,0.10196,0.07450}% burgundy: 139/255 (0.545098) or 152/255 (0.596078)
+\definecolor{color2}{rgb}{0.35,0.35,0.35}% dark grey
+
+\RequirePackage{fontspec}
+\usepackage{multicol}
+\usepackage{fontawesome5}
+\usepackage[abspath]{currfile}
+
+\nopagenumbers{}
+\usepackage[utf8]{luainputenc}
+
+\newfontfamily{\cinzel}[Path=\currfileabsdir, Ligatures=TeX, UprightFont=CinzelDecorative-Regular.ttf, BoldFont=CinzelDecorative-Bold.ttf]{CinzelDecorative}
+
+\renewcommand{\familydefault}{\rmdefault}
+\renewcommand*{\addresssymbol}       {{\small\faMapMarker}~}
+\renewcommand*{\mobilephonesymbol}   {{\small\faPhoneSquare}~}
+\renewcommand*{\emailsymbol}         {{\small\faEnvelopeSquare}~}
+\newcommand*  {\homepagesocialsymbol}{{\small\faIcon{external-link-square-alt}}~}
+\renewcommand*{\linkedinsocialsymbol}{{\small\faLinkedin}~}
+\renewcommand*{\twittersocialsymbol} {{\small\faTwitterSquare}~}
+\renewcommand*{\githubsocialsymbol}  {{\small\faGithubSquare}~}
+\newcommand*  {\vimeosocialsymbol}   {{\small\faVimeoSquare}~}
+\newcommand*  {\imdbsocialsymbol}    {{\small\faImdb}~}
+\newcommand*  {\instagramsocialsymbol}    {{\small\faInstagram}~}
+
+\newcommand{\shoton}[1]{{\tiny (using #1)}}
+
+\usepackage[scale=0.82]{geometry}
+%\usepackage{enumitem}
+\setlength{\hintscolumnwidth}{4cm}
+%\setlength{\makecvtitlenamewidth}{10cm}
+
+\renewcommand*{\namefont}{\fontsize{34}{36}\cinzel\bfseries}
+\renewcommand*{\namestyle}[1]{{\namefont\textcolor{color1}{#1}}}
+
+\renewcommand*{\titlefont}{\large\cinzel\upshape}
+\renewcommand*{\titlestyle}[1]{{\titlefont\textcolor{color1}{#1}}}
+
+% personal data
+\newcommand{\jobtitle}{Videographer}
+
+\name{Rita}{K. Raven}
+\title{\jobtitle}
+\address{Edinburgh, Scotland}{}{}
+\phone[mobile]{07~58~66~88~254}
+\email{mail@gelion.info}
+
+\collectionadd[homepage]{socials}{\protect\httplink[http://gelion.info]{gelion.info}}
+\collectionadd[twitter]{socials}{\protect\httplink[{\tiny twitter.com/}gelion2k]{twitter.com/gelion2k}}
+\collectionadd[linkedin]{socials}{\protect\httplink[{\tiny linkedin.com/in/}gelion]{linkedin.com/in/gelion}}
+\collectionadd[vimeo]{socials}{\protect\httplink[{\tiny vimeo.com/}gelion]{www.vimeo.com/gelion}}
+\collectionadd[imdb]{socials}{\protect\httplink[{\tiny imdb.com/name/}nm9475948]{www.imdb.com/name/nm9475948}}
+\collectionadd[instagram]{socials}{\protect\httplink[{\tiny instagram.com/}gelion2k]{instagram.com/gelion2k}}
+%\extrainfo{additional information}
+\photo[64pt][0pt]{gelion.png}
+%\quote{Some quote}
+
+%\setlist{noitemsep,nosep,margin=0.70cm}
+
+\begin{document}
+
+\makecvtitle
+
+\vspace{-2.5em}
+
+I am a motivated, multilingual \jobtitle{} with experience in creating short movies and promo videos. Apart from my freelance work I am also trying to pursue a career in camera assisting in larger productions. My largest project so far is being the Director of Photography of Still Game star Frank Gilhooley's debut feature movie: Betrayal.
+
+\section{Key Skills}
+\vspace{-1em}
+\begin{multicols}{2}
+\begin{itemize}
+\item Full Driving Licence, Category B
+\item Proficient: DSLR and similar digital cameras
+\item Proficient: Adobe Premiere Pro and DaVinci Resolve
+\item Basic: Other broadcast cameras and equipment
+\item Fluent: German, Swedish and Hungarian
+\end{itemize}
+\end{multicols}
+
+\section{Work experience}
+
+\cventry{\href{http://gelion.info}{Various locations}}{Freelance Filmmaker and Videographer}{}{}{2008-today}{%
+Producer, Writer, Director, Camera Operator and Video Editor of various films, documentary projects, and live events.
+Portfolio available on my site:
+\href{http://gelion.info}{http://gelion.info}
+}
+
+\cvitem{Selected Works}{%
+\begin{itemize}
+\item 2018-2020 {\bfseries Betrayal}, \textit{Thriller}, Director of Photography
+\item 2018-2019 {\bfseries Edinburgh Festival City Volunteers}, \textit{Promo Video}, Videographer
+\item 2018 {\bfseries Spaceship}, \textit{Short Movie}, Script Supervisor
+\item 2018 {\bfseries A is for Artist}, \textit{Short Art Movie}, Camera Assistant
+\item 2018 {\bfseries Anat's Party}, \textit{Short Movie}, Camera Assistant
+\item 2017 {\bfseries 21st UK Jewish Film Festival}, \textit{Promo Video}, Camera Assistant
+\item 2017 {\bfseries Self Esteem -- Your Wife}, \textit{Music Promo}, Camera Trainee
+\item 2017 {\bfseries Nine Mile Creek}, {\bfseries You Should Know Better} \textit{Short Film}, Script Supervisor
+\item 2017 {\bfseries I've made a mistake}, \textit{Music Video}, Dir., Script, Camera, Editing
+\item 2015 {\bfseries One SIM Card Is Enough}, \textit{Advertisement}, Dir., Script, Cam., Editing
+\item 2014 {\bfseries Klapa Kozino}, \textit{Live concert}, Camera, Editing
+\item 2011 {\bfseries Séance}, \textit{Short Movie}, Director, Script, Camera, Editing
+\end{itemize}
+\textbf{Experience gained in} organising, researching, directing, DSLR cameras, editing
+}
+
+\cvitem{Selected Volunteering Experience}{%
+\begin{itemize}
+\item 2023- {\bfseries Craigmillar Literacy Trust}, \textit{Trustee}
+\item 2018-2022 {\bfseries Edinburgh International Film Festival}, \textit{Registrations Team}
+\item 2018-2019 {\bfseries Edinburgh Festival City Volunteers}, \textit{Team Lead}
+\item 2016 {\bfseries Film London Creative Partnership Day}, \textit{Volunteer}
+\end{itemize}
+}
+
+\cventry{\href{http://www.itvjobs.com/working-here/itv-insight}{ITV Insight, Love your Mac}}{Project Assistant}{London}{UK}{October 2015}{%
+Member of the floorwalking team, tasks included: \begin{itemize}
+\item Promoting the benefits of upgrading the OSX version
+\item Helping employees upgrade their computers
+\item Diagnosing technical issues and escalating when necessary
+\end{itemize}
+\textbf{Experience gained in} Apple based systems, IT support
+\newline{}
+}
+
+\cventry{\href{http://www.bbc.co.uk/}{BBC Documentary Department}}{Intern}{London}{UK}{August 2014}{%
+Various Runner and Production Assistant tasks, including:
+\begin{itemize}
+\item delivering equipment
+\item surveillance of the location
+\item updating callsheets and calendars
+\item transcoding media files
+\end{itemize}
+Worked on various projects, including \emph{Britain on the Fiddle (Series 2)}, \emph{Our War (Series 3)}, \emph{Modern Times `Weekend Warriors'}
+\newline{}
+\textbf{Experience gained in} runner tasks, researching, AVID Media Composer, Microsoft Office, FFmpeg, transcoding
+}
+
+\newpage
+
+\section{Additional experience}
+
+\cventry{\href{/}{Soho Create}}{Stage Assistant Manager}{London}{UK}{June 2016}{%
+Preparing of the venue for the panels, liaising with the exhibitors during the preparations and building process, answering questions and queries, assisting the stage managers, meeting and greeting the panelists, catering, informing the audience
+\newline{}
+}
+
+\cventry{\href{http://4talent.channel4.com//}{Channel 4, 4Creative Department}}{Intern}{London}{UK}{May 2015}{%
+Various Runner and Researcher tasks, including:
+\begin{itemize}
+\item delivering equipment
+\item researching programmes on social media
+\end{itemize}
+Worked on various projects, including \emph{Underdog}, \emph{Benefits Street 2} and \emph{The Jump}
+\newline{}
+\textbf{Experience gained in} runner tasks, researching, brainstorming ideas
+\newline{}
+}
+
+\cventry{\href{http://tv.rub.de/}{TV.RUB}}{Reporter, Camera Operator, Editor}{Bochum}{Germany}{2012}{%
+Participated in the operations of TV.RUB, the student operated television of Ruhr University Bochum.
+Tasks included the live broadcast of the Bochum Summer Festival
+\newline{}
+}
+
+\cventry{\href{http://cancellar.hu/}{Cancellar Informatics}}{Office Assistant}{Budapest}{Hungary}{2010--2011}{%
+Office Assistant at a small IT startup company. Tasks included:
+\begin{itemize}
+\item managing diaries and making appointments
+\item dealing with the post
+\item drafting letters and other documents
+\item answering phone calls and queries
+\end{itemize}
+\textbf{Experience gained in} Microsoft Office, Windows based systems, IT support, organising
+\newline{}
+}
+
+\cventry{\href{http://bss.sch.bme.hu/user/gelion}{Budavári Schönherz Studio}}{Programme Editor, Camera Operator}{Budapest}{Hungary}{2011--2013}{%
+Member of BSS, the studio of the Budapest University of Technology and Economics
+\begin{itemize}
+\item Took part in live broadcasting operations at BSTV, the online television channel of the studio
+\item Installation and setup of the broadcasting system at the VIII\@. Simonyi Conference
+\item Camera Operator at the X. Simonyi Conference
+\end{itemize}
+\textbf{Experience gained in} AVID Media Composer, broadcast camera operating, organising, promotion, event setup
+\newline{}
+}
+
+\cventry{\href{http://zuglotv.hu/}{Zugló TV}}{Researcher, Reporter, Camera Operator, Video Editor}{Budapest}{Hungary}{2009--2012}{%
+Participated in the operations of the television programme KaCsa (Youngster Channel) of a local TV channel
+\newline{}
+}
+
+\cventry{Various Scientific Conferences}{Event organiser, Speaker}{Budapest}{Hungary}{2007--2009}{%
+Participated in organising of various conferences including the NECS -- European Network for Cinema and Media Studies conference in 2008
+\newline{}
+Speaker at the VIII. Eötvös Conference in 2007
+\newline{}
+Talk: \emph{Women in the Viking Age}, Social Studies section
+}
+
+\section{Education}
+\cvitem{University}{%
+\begin{itemize}
+  \item \textbf{Eötvös Loránd University} -- Film Studies MA (Dist) degree
+  \item \textbf{Ruhr-University Bochum} -- Media Studies MA Erasmus student
+  \item \textbf{Eötvös Loránd University} -- Scandinavian Studies
+\end{itemize}}
+\vspace*{-\baselineskip}
+\cvitem{Trainings}{%
+\begin{itemize}
+  \item \textbf{Digital Film Skills} -- ongoing training by the Creative Skillset
+  \item \textbf{Diploma in Video} -- one month online course by the Shaw Academy
+  \item \textbf{Runner Training} -- two day course by The Production Guild
+  \item \textbf{Explore Filmmaking: From Script To Screen} -- online course by the NFTS
+\end{itemize}}
+\vspace*{-\baselineskip}
+
+%\clearpage
+%
+%\recipient{Company}{Company, Inc.\\123 somestreet\\some city}
+%\date{January 01, 1984}
+%\opening{Dear Sir or Madam,}
+%\closing{Yours faithfully,}
+%\enclosure[Attached]{curriculum vit\ae{}}          % use an optional argument to use a string other than "Enclosure", or redefine \enclname
+%\makelettertitle
+%
+%text
+%
+%\makeletterclosing
+\end{document}
