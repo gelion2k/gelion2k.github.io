@@ -5,3 +5,7 @@ cv/*.aux
 cv/*.log
 cv/*.out
 cv/*.synctex.gz
+documents/*.aux
+documents/*.log
+documents/*.out
+documents/*.synctex.gz

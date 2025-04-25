@@ -1,0 +1,126 @@
+%! TEX program = lualatex
+\documentclass[10pt,a4paper,roman]{moderncv}
+
+\moderncvstyle[right]{classic}
+\moderncvcolor{burgundy}
+
+%\definecolor{color0}{rgb}{0,0,0}% black
+\definecolor{color1}{rgb}{0.4,0.10196,0.07450}% burgundy: 139/255 (0.545098) or 152/255 (0.596078)
+\definecolor{color2}{rgb}{0.35,0.35,0.35}% dark grey
+
+\RequirePackage{fontspec}
+\usepackage{multicol}
+\usepackage{fontawesome5}
+\usepackage[abspath]{currfile}
+\usepackage{footmisc}
+
+\nopagenumbers{}
+\usepackage[utf8]{luainputenc}
+
+\newfontfamily{\cinzel}[Path=\currfileabsdir, Ligatures=TeX, UprightFont=CinzelDecorative-Regular.ttf, BoldFont=CinzelDecorative-Bold.ttf]{CinzelDecorative}
+
+\renewcommand{\familydefault}{\rmdefault}
+\renewcommand*{\addresssymbol}       {{\small\faMapMarker}~}
+\renewcommand*{\mobilephonesymbol}   {{\small\faPhoneSquare}~}
+\renewcommand*{\emailsymbol}         {{\small\faEnvelopeSquare}~}
+\newcommand*  {\homepagesocialsymbol}{{\small\faIcon{external-link-square-alt}}~}
+\renewcommand*{\linkedinsocialsymbol}{{\small\faLinkedin}~}
+\renewcommand*{\twittersocialsymbol} {{\small\faTwitterSquare}~}
+\renewcommand*{\githubsocialsymbol}  {{\small\faGithubSquare}~}
+\newcommand*  {\vimeosocialsymbol}   {{\small\faVimeoSquare}~}
+\newcommand*  {\imdbsocialsymbol}    {{\small\faImdb}~}
+\newcommand*  {\instagramsocialsymbol}    {{\small\faInstagram}~}
+
+\newcommand{\shoton}[1]{{\tiny (using #1)}}
+
+\usepackage[scale=0.82]{geometry}
+%\usepackage{enumitem}
+\setlength{\hintscolumnwidth}{4cm}
+%\setlength{\makecvtitlenamewidth}{10cm}
+
+\renewcommand*{\namefont}{\fontsize{34}{36}\cinzel\bfseries}
+\renewcommand*{\namestyle}[1]{{\namefont\textcolor{color1}{#1}}}
+
+\renewcommand*{\titlefont}{\large\cinzel\upshape}
+\renewcommand*{\titlestyle}[1]{{\titlefont\textcolor{color1}{#1}}}
+
+% personal data
+\newcommand{\jobtitle}{Photography and Videography}
+
+\name{Rita}{K. Raven}
+\title{\jobtitle}
+\address{Edinburgh, Scotland}{}{}
+\phone[mobile]{07~58~66~88~254}
+\email{mail@gelion.info}
+
+\collectionadd[homepage]{socials}{\protect\httplink[https://gelion.info]{gelion.info} \vspace{3em}}
+%\extrainfo{additional information}
+\photo[64pt][0pt]{gelion.png}
+%\quote{Some quote}
+
+%\setlist{noitemsep,nosep,margin=0.70cm}
+
+\begin{document}
+
+\makecvtitle
+
+\vspace{-2.5em}
+
+\begin{flushright}
+{\large Price list for Businesses, Institutions and Charities}
+\end{flushright}
+
+\section{General Rate}
+
+\vspace{1em}
+
+\begin{center}
+{\setlength{\tabcolsep}{2em}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{c c}
+{\Large £99/hr} & {\Large £49/hour}  \\
+on-location & post-processing
+\end{tabular}
+}
+\end{center}
+
+\begin{itemize}
+\item Photography: price includes professional camera, lenses \& flash equipment
+\item Videography: price includes HD camera, tripod \& sound recording equipment
+\item Price exludes travel fees, except for services done in Edinburgh and Midlothian
+\item For on-location shooting minimum chargeable rate is 2hr/day
+\item For photography post-processing means the development of the images including cropping, colour grading and sharpening
+\item Enhanced image processing (eg. Photoshop) is also available if needed, and charged at the same post-processing rates
+\item For videography post-processing includes selection, editing, sound design, music, colour grading, effects and titles as required
+\item For videography if editing is not required we can also provide the selected works separately to the editor of your choice
+\end{itemize}
+
+\vspace{2em}
+
+\section{Photography packages}
+
+We also provide guide prices for longer sessions and repeated visits. The below packages include both on-location and basic post-processing work. Before the shoot we will also liaise with you to understand your requirements, so we can know if there would be any additional charges, for example enhanced image processing fees.
+
+\vspace{1em}
+
+\begin{itemize}
+\item Half-day (4hr) photography session, around 20-30 pictures: £350
+\item Full-day (7.5hr) photography session, around 40-60 pictures: £500
+\item Multi-visit (4x1.5hr) photography session, around 10 pictures per visit: £500
+\item Multi-visit (8x1.5hr) photography session, around 10 pictures per visit: £800
+\end{itemize}
+
+\vspace{2em}
+
+\section{Notes}
+
+\begin{itemize}
+\item Copyright and Moral Rights are retained by Gelion Pictures on all images and videos produced
+\item General license on produced media allow for both online and print reproduction in unaltered form. Modification rights are reserved and need to be negotiated separately if required
+\item For videography post-processing, music licenses are not included in the rates above and have to be obtained separately
+\item We are a digital-only service providing the resulting images and videos electronically. Items can also be provided on CD/DVD/Blu-Ray for an extra charge if required.
+\item Prices are net prices and don't include VAT. Additionally Gelion Pictures is not VAT registered, therefore invoices will not include VAT
+\item Prices above are guide prices and are all negotiable
+\end{itemize}
+
+\end{document}
